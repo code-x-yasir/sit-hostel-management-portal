@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #122033;
+  background: #ffffff;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-sit-gold focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-sit-navy px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00264d] focus-ring disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md border border-sit-gold px-4 py-2.5 text-sm font-semibold text-sit-navy transition hover:bg-[#fff7e6] focus-ring;
+}
+
+.btn-hero-fee {
+  @apply border-white bg-white text-sit-navy hover:bg-slate-100;
+}
+
+.input {
+  @apply w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-sit-gold focus:outline-none focus:ring-2 focus:ring-sit-gold/25;
+}
+
+.section {
+  @apply mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8;
+}
+
+.masonry {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.display-font {
+  font-family: 'DM Serif Display', Georgia, serif;
+}

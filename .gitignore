@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.DS_Store
+**/.DS_Store
+AI-Content-OS/
+ppt.js
+npm-debug.log*
+
+.idea/*
+!.idea/runConfigurations/
+!.idea/runConfigurations/SIT_Hostel_Portal.xml

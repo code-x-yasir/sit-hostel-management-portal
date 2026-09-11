@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sit-hostel-management-portal
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        value: https://sit-hostel-management-portal.onrender.com
+      - key: JWT_SECRET
+        generateValue: true

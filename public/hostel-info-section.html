@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIT Hostel Information Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --navy: #003366;
+        --gold: #c89520;
+        --mist: #f4f7fb;
+        --ink: #122033;
+        --line: #dbe3ef;
+        --total: #fff2cf;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: "DM Sans", system-ui, sans-serif;
+      }
+
+      .hostel-section {
+        padding: 48px 18px 96px;
+        background: linear-gradient(180deg, #ffffff 0%, var(--mist) 100%);
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      .panel {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 18px 45px rgba(0, 51, 102, 0.1);
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px;
+        background: var(--navy);
+        color: #ffffff;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo {
+        display: grid;
+        place-items: center;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: var(--navy);
+        font-weight: 800;
+        border: 4px solid var(--gold);
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        color: var(--navy);
+      }
+
+      h1 {
+        margin-top: 4px;
+        color: #ffffff;
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 400;
+      }
+
+      h2 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        max-width: 460px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.65;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 12px 14px;
+        border-radius: 8px;
+        background: var(--mist);
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--navy);
+        font-size: 22px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      th {
+        padding: 14px 16px;
+        background: var(--navy);
+        color: #ffffff;
+        text-align: left;
+      }
+
+      td {
+        padding: 14px 16px;
+        border-top: 1px solid #edf1f6;
+      }
+
+      tbody tr {
+        transition: background 0.18s ease, transform 0.18s ease;
+      }
+
+      tbody tr:hover {
+        background: #fff8e8;
+      }
+
+      .block-name,
+      .amount {
+        color: var(--navy);
+        font-weight: 800;
+      }
+
+      .cards {
+        display: none;
+        gap: 12px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: #ffffff;
+      }
+
+      .fees {
+        margin-top: 36px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .tabs {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .tab {
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 18px;
+        background: transparent;
+        color: var(--navy);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .tab.active {
+        background: var(--navy);
+        color: #ffffff;
+      }
+
+      .fee-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 22px;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+
+      .fee-grid.switching {
+        opacity: 0.35;
+      }
+
+      .fee-title {
+        padding: 15px 16px;
+        border-radius: 8px 8px 0 0;
+        background: var(--navy);
+        color: #ffffff;
+        font-weight: 800;
+      }
+
+      .fee-table {
+        border-radius: 0 0 8px 8px;
+      }
+
+      .total-row td {
+        background: var(--total);
+        border-top: 2px solid var(--gold);
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      .note {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: #fff8e8;
+        color: var(--navy);
+        font-weight: 800;
+      }
+
+      .report {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(0, 51, 102, 0.18);
+      }
+
+      #feedback {
+        margin-top: 26px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--mist);
+      }
+
+      @media (max-width: 820px) {
+        .hero,
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .table-wrap {
+          display: none;
+        }
+
+        .cards {
+          display: grid;
+        }
+
+        .fee-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hostel-section">
+      <div class="wrap panel">
+        <header class="hero">
+          <div class="brand">
+            <div class="logo">SIT</div>
+            <div>
+              <p class="eyebrow">Hostel Admissions 2025-26</p>
+              <h1>Hostel Information</h1>
+            </div>
+          </div>
+          <p class="hero-copy">Official hostel block directory and fee structure for Siddaganga Institute of Technology, Tumakuru.</p>
+        </header>
+
+        <main class="content">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Section 1</p>
+              <h2>Hostel Blocks Directory</h2>
+            </div>
+            <div class="stats">
+              <div class="stat"><strong>06</strong>Blocks</div>
+              <div class="stat"><strong>2,086</strong>Capacity</div>
+              <div class="stat"><strong>24x7</strong>Support</div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Sl. No</th><th>Hostel Block</th><th>Capacity</th><th>Deputy Warden</th><th>Mobile No</th><th>Hostel Phone No</th></tr>
+              </thead>
+              <tbody id="directoryRows"></tbody>
+            </table>
+          </div>
+          <div class="cards" id="directoryCards"></div>
+
+          <section class="fees">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Section 2</p>
+                <h2>Hostel Fee Structure (AY 2025-2026)</h2>
+              </div>
+              <div class="tabs" role="tablist">
+                <button class="tab active" data-tab="For Male">For Male</button>
+                <button class="tab" data-tab="For Female">For Female</button>
+              </div>
+            </div>
+            <div id="feeAudience" class="note">Showing fees: For Male</div>
+            <div class="fee-grid" id="feeGrid"></div>
+            <p class="note">Single Room: ₹5,000 extra</p>
+          </section>
+
+          <section id="feedback">
+            <strong>Report Error</strong>
+            <p>Found a correction in hostel contacts or fees? Send it to the hostel office for review.</p>
+            <a href="mailto:hostel@sit.ac.in?subject=Hostel%20Information%20Correction">Open feedback email</a>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <a class="report" href="#feedback">Report Error</a>
+
+    <script>
+      const hostels = [
+        ['01', 'Ganga Hostel', '290', 'Dr. K B Roopa', '+91 9448030642', '0816 2282691'],
+        ['02', 'Akkamahadevi Block', '240', 'T O Geetharani', '+91 9844538088', '0816 2291165'],
+        ['03', 'Mahatma Gandhi Block', '355', 'Dr. B Vasudev', '+91 7619178168', '0816 2291121'],
+        ['04', 'Basaveshwara Block', '580', 'Dr. C Somashekar', '+91 9844420529', '0816 2291041'],
+        ['05', 'Lalbahadur Shastri Block', '328', 'Dr. S Suresh Kumar', '+91 9449626854', '0816 2283773, 2281676'],
+        ['06', 'Allamaprabhu Block', '293', 'Dr. Virupaxi Auradi', '+91 9844386037', '0816 2282373, 2282374']
+      ];
+
+      const fees = [
+        {
+          title: 'First Year (BE / M.Tech / MBA / MCA)',
+          total: '₹86,550',
+          rows: [
+            ['Caution Deposit', '₹1,500'],
+            ['Room Rent', '₹13,000'],
+            ['Establishment Charges', '₹25,000'],
+            ['Advance Mess Bill', '₹42,000'],
+            ['Welfare Fund', '—'],
+            ['Application Fee', '₹50'],
+            ['Building Fund', '₹5,000']
+          ]
+        },
+        {
+          title: 'Second / Third / Fourth Year',
+          total: '₹81,550',
+          rows: [
+            ['Caution Deposit', '₹1,500'],
+            ['Room Rent', '₹13,000'],
+            ['Establishment Charges', '₹25,000'],
+            ['Advance Mess Bill (approx. 10 months)', '₹42,000'],
+            ['Welfare Fund', '—'],
+            ['Application Fee', '₹50']
+          ]
+        }
+      ];
+
+      document.getElementById('directoryRows').innerHTML = hostels.map(([sl, block, capacity, warden, mobile, phone]) => `
+        <tr>
+          <td class="amount">${sl}</td>
+          <td class="block-name">${block}</td>
+          <td>${capacity}</td>
+          <td>${warden}</td>
+          <td>${mobile}</td>
+          <td>${phone}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('directoryCards').innerHTML = hostels.map(([sl, block, capacity, warden, mobile, phone]) => `
+        <article class="card">
+          <p class="eyebrow">Sl. No ${sl}</p>
+          <h3>${block}</h3>
+          <p><strong>Capacity:</strong> ${capacity}</p>
+          <p><strong>Deputy Warden:</strong> ${warden}</p>
+          <p><strong>Mobile:</strong> ${mobile}</p>
+          <p><strong>Hostel Phone:</strong> ${phone}</p>
+        </article>
+      `).join('');
+
+      function renderFees(audience) {
+        const grid = document.getElementById('feeGrid');
+        document.getElementById('feeAudience').textContent = `Showing fees: ${audience}`;
+        grid.classList.add('switching');
+        setTimeout(() => {
+          grid.innerHTML = fees.map((fee) => `
+            <div>
+              <div class="fee-title">${fee.title}</div>
+              <table class="fee-table">
+                <thead><tr><th>Fee Head</th><th>Amount</th></tr></thead>
+                <tbody>
+                  ${fee.rows.map(([head, amount]) => `<tr><td>${head}</td><td class="amount">${amount}</td></tr>`).join('')}
+                  <tr class="total-row"><td>Total</td><td>${fee.total}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          `).join('');
+          grid.classList.remove('switching');
+        }, 120);
+      }
+
+      document.querySelectorAll('.tab').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach((tab) => tab.classList.remove('active'));
+          button.classList.add('active');
+          renderFees(button.dataset.tab);
+        });
+      });
+
+      renderFees('For Male');
+    </script>
+  </body>
+</html>
